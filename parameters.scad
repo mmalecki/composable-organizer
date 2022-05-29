@@ -1,0 +1,24 @@
+press_fit = 0.05;
+tight_fit = 0.1;
+fit = 0.2;
+loose_fit = 0.5;
+
+// `u` - a single unit of size within our containers. Containers with the
+// same `u` can compose with each other.
+u = 20;
+
+// Wall thickness.
+wall_t = 1.2;
+
+// Computed parameters follow.
+receptacle_d = 3 * wall_t;
+
+hinge_base_h = 0.01;
+hinge_w = u - 2 * wall_t;
+
+hinge_u = 1.6;
+hinge_o_d = hinge_u * 4;
+hinge_i_d = hinge_u * 2;
+hinge_wall_t = (hinge_o_d - hinge_i_d) / 2;
+
+lid_hinge_angle = 260;
