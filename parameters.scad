@@ -8,19 +8,17 @@ loose_fit = 0.5;
 u = 20;
 
 // Wall thickness.
-wall_t = 1.2;
+wall_t = 1.2; // Minimum thickness that makes sense with 0.4 mm FDM.
 
-// Computed parameters follow.
 receptacle_d = 3 * wall_t;
 
 total_u = u + 2 * wall_t;
 
-hinge_u = 1.6;
+hinge_u = 1.6; // Minimum "unit" that produces a sensible hinge with 0.4 mm FDM.
 hinge_o_d = hinge_u * 4;
 hinge_i_d = hinge_u * 2;
 hinge_wall_t = (hinge_o_d - hinge_i_d) / 2;
 
-hinge_w = u - 2 * wall_t;
 hinge_support_step = 20;
 hinge_support_w = 2;
 hinge_support_t = hinge_u;
