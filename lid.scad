@@ -18,17 +18,18 @@ module lid (size) {
   }
 
   receptacles = floor(o_y / hinge_support_step);
+  receptacle_w = hinge_support_step - 4 * fit - 2 * wall_t;
   translate([body_l + hinge_o_d / 2, wall_t, -hinge_o_d / 4 + fit / 2]) {
     for (i = [1 : receptacles]) {
       translate([
         0,
-        fit / 2 + (i - 1) * (hinge_support_step + wall_t + hinge_support_w / 2 + fit),
+        2 * fit + (hinge_support_step + 2 * wall_t) * (i - 1),
         0
       ]) {
         rotate([270, (360 - lid_hinge_angle) / 2 + 90, 0]) {
           circle_sleeve(
             hinge_o_d - fit,
-            hinge_support_step - 2 * fit - hinge_support_w / 2 - wall_t,
+            receptacle_w,
             hinge_wall_t - press_fit - fit / 2,
             lid_hinge_angle
           );
