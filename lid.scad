@@ -48,5 +48,5 @@ module lid (size) {
 }
 
 if (!is_undef(size)) {
-  lid(size);
+  rotate([180, 0, 0]) lid(size);
 }
