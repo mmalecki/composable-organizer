@@ -7,8 +7,7 @@ module lid (size) {
   o_y = outer_y(size[1]);
   w = o_y - 2 * wall_t;
   w_fit = w - fit;
-  l = size[0] * u;
-  body_l = l + 2 * wall_t - hinge_o_d;
+  body_l = o_x - hinge_o_d;
 
   translate([0, 0, hinge_u - wall_t]) {
     hull () {
@@ -18,7 +17,7 @@ module lid (size) {
     }
   }
 
-  receptacles = floor(w / hinge_support_step);
+  receptacles = floor(o_y / hinge_support_step);
   translate([body_l + hinge_o_d / 2, wall_t, -hinge_o_d / 4 + fit / 2]) {
     for (i = [1 : receptacles]) {
       translate([
