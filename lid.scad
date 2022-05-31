@@ -22,10 +22,10 @@ module lid (size) {
     }
   }
 
-  receptacles = floor(o_y / (hinge_support_step + wall_t));
+  receptacles = floor(o_y / hinge_support_step);
   receptacle_w = hinge_support_step - 2 * receptacle_fit - 2 * wall_t;
   translate([body_l + hinge_o_d / 2, wall_t, -hinge_o_d / 4 + fit / 2]) {
-    for (i = [1 : receptacles]) {
+    for (i = [1 : 1 : receptacles]) {
       translate([
         0,
         receptacle_fit + (hinge_support_step + 2 * wall_t) * (i - 1),
