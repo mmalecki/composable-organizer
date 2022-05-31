@@ -1,22 +1,28 @@
 use <utils.scad>;
+use <sizing.scad>;
 include <parameters.scad>;
 
 module receptacle (o_y, h) {
   square_sleeve([receptacle_d, o_y, h], wall_t);
 }
 
-module hinge (i_y) {
-  // Hinge bridge:
-  translate([0, wall_t, 0])
-    rotate([270, 0, 0]) cylinder(d = hinge_i_d, h = i_y);
-
+module hinge_supports (i_y) {
   supports = floor(i_y / (hinge_support_step + hinge_support_w));
   if (supports > 0) {
     for (i = [1 : supports]) {
-      translate([0, i*(wall_t + hinge_support_step) - hinge_support_w, 0])
+      // translate([0, i*(wall_t + hinge_support_step) - hinge_support_w, 0])
+      translate([0, hinge_support_step- hinge_support_w / 2, 0])
         rotate([0, 135, 0])
           cube([wall_t, hinge_support_w, sqrt(pow(hinge_o_d, 2) * 2) / 2]);
     }
+  }
+}
+
+module hinge (i_y) {
+  // Hinge bridge:
+  translate([0, wall_t, 0]) {
+    rotate([270, 0, 0]) cylinder(d = hinge_i_d, h = i_y);
+    hinge_supports(i_y);
   }
 }
 
@@ -35,8 +41,8 @@ module insert (o_z, bridge_h) {
 // Single compartment of given size in `u`.
 //
 module compartment (size, lid_hinge = false) {
-  o_x = size[0] * u + (size[0] - 1) * (2 * wall_t);
-  o_y = size[1] * u + (size[1] - 1) * (2 * wall_t);
+  o_x = outer_x(size[0]);
+  o_y = outer_y(size[1]);
   o_z = size[2] * u;
 
   i_x = o_x - 2 * wall_t;
@@ -72,4 +78,8 @@ module compartment (size, lid_hinge = false) {
   if (lid_hinge) {
     translate([o_x - hinge_o_d / 2, 0, o_z - hinge_i_d]) hinge(i_y);
   }
+}
+
+if (!is_undef(size)) {
+  compartment(size, true);
 }

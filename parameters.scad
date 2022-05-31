@@ -17,7 +17,7 @@ total_u = u + 2 * wall_t;
 
 hinge_base_h = 0.01;
 hinge_w = u - 2 * wall_t;
-hinge_support_step = u + wall_t;
+hinge_support_step = u;
 hinge_support_w = 2;
 
 hinge_u = 1.6;
