@@ -64,8 +64,8 @@ module compartment (size, lid_hinge = false) {
     }
   }
 
-  translate([o_x, -2 * wall_t]) rotate([0, 0, 90]) receptacle(o_x, insert_bridge_h);
-  translate([wall_t, o_y]) rotate([0, 0, 180]) receptacle(o_y, insert_bridge_h);
+  translate([o_x, -2 * wall_t]) rotate([0, 0, 90]) receptacle(o_x, insert_bridge_h - fit);
+  translate([wall_t, o_y]) rotate([0, 0, 180]) receptacle(o_y, insert_bridge_h - fit);
 
   for (j = [1 : floor(size[0])])
     translate([wall_t + total_u * (j - 1), o_y])
