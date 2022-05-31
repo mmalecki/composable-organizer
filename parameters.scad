@@ -22,5 +22,6 @@ hinge_wall_t = (hinge_o_d - hinge_i_d) / 2;
 hinge_support_step = 20;
 hinge_support_w = 2;
 hinge_support_t = hinge_u;
+hinge_rib_t = fit;
 
 lid_hinge_angle = 260;

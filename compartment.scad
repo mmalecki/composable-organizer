@@ -17,22 +17,29 @@ module hinge_supports (i_y) {
   }
 }
 
-module hinge (i_y) {
+module hinge (i_y, o_z) {
   // Hinge bridge:
-  translate([0, wall_t, 0]) {
+  translate([0, wall_t, o_z - hinge_i_d]) {
     rotate([270, 0, 0]) cylinder(d = hinge_i_d, h = i_y);
     hinge_supports(i_y);
   }
+
+  // Ribs (in hopes of supporting the structure a little):
+  translate([-hinge_i_d / 2, wall_t])
+    cube([hinge_i_d, hinge_rib_t, o_z - wall_t]);
+  translate([-hinge_i_d / 2, i_y + wall_t - hinge_rib_t])
+    cube([hinge_i_d, hinge_rib_t, o_z - wall_t]);
 }
 
-module insert (o_z, bridge_h) {
+module insert (o_z, bridge_h, lid_guard = false) {
   x_fit = loose_fit;
   y_fit = loose_fit;
   insert_w = u - 2 * wall_t - y_fit;
 
   translate([0, y_fit / 2]) {
     translate([0, 0, bridge_h]) cube([wall_t + x_fit, insert_w, wall_t]);
-    translate([wall_t + x_fit, 0]) cube([wall_t - x_fit, insert_w, bridge_h + wall_t]);
+    translate([wall_t + x_fit, 0])
+      cube([wall_t - x_fit, insert_w, bridge_h + wall_t + (lid_guard ? hinge_i_d : 0)]);
   }
 }
 
@@ -72,10 +79,10 @@ module compartment (size, lid_hinge = false) {
         insert(o_z, insert_bridge_h);
 
   for (i = [1 : floor(size[1])])
-    translate([o_x, wall_t + total_u * (i - 1)]) insert(o_z, insert_bridge_h);
+    translate([o_x, wall_t + total_u * (i - 1)]) insert(o_z, insert_bridge_h, lid_guard = lid_hinge);
 
   if (lid_hinge) {
-    translate([o_x - hinge_o_d / 2, 0, o_z - hinge_i_d]) hinge(i_y);
+    translate([o_x - hinge_o_d / 2, 0]) hinge(i_y, o_z);
   }
 }
 

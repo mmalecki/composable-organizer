@@ -5,7 +5,7 @@ include <parameters.scad>;
 module lid (size) {
   // This is so when `hinge_support_step = u`, we get an aesthetically pleasing
   // effect with the insert. There, I'm that vain.
-  receptacle_fit = 2 * fit;
+  receptacle_fit = 2 * fit + hinge_rib_t;
 
   o_x = outer_x(size[0]);
   o_y = outer_y(size[1]);
@@ -37,7 +37,7 @@ module lid (size) {
             receptacle_w,
             // The `press_fit` is the fit around the hinge, `fit / 2` comes
             // from the `- fit` on the outer diatemeter.
-            hinge_wall_t - press_fit - fit / 2,
+            hinge_wall_t - tight_fit - fit / 2,
             lid_hinge_angle
           );
         }
