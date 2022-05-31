@@ -15,14 +15,14 @@ receptacle_d = 3 * wall_t;
 
 total_u = u + 2 * wall_t;
 
-hinge_base_h = 0.01;
-hinge_w = u - 2 * wall_t;
-hinge_support_step = u;
-hinge_support_w = 2;
-
 hinge_u = 1.6;
 hinge_o_d = hinge_u * 4;
 hinge_i_d = hinge_u * 2;
 hinge_wall_t = (hinge_o_d - hinge_i_d) / 2;
+
+hinge_w = u - 2 * wall_t;
+hinge_support_step = 20;
+hinge_support_w = 2;
+hinge_support_t = hinge_u;
 
 lid_hinge_angle = 260;

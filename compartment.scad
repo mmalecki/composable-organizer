@@ -12,7 +12,7 @@ module hinge_supports (i_y) {
     for (i = [1 : supports]) {
       translate([0, -hinge_support_w / 2 + i * hinge_support_step + (i - 1) * (2 * wall_t), 0])
         rotate([0, 135, 0])
-          cube([wall_t, hinge_support_w, sqrt(pow(hinge_o_d, 2) * 2) / 2]);
+          cube([hinge_support_t, hinge_support_w, sqrt(pow(hinge_o_d, 2) * 2) / 2]);
     }
   }
 }
