@@ -35,7 +35,7 @@ module lid (size) {
           circle_sleeve(
             hinge_o_d - fit,
             receptacle_w,
-            // The `press_fit` is the fit around the hinge, `fit / 2` comes
+            // The `tight_fit` is the fit around the hinge, `fit / 2` comes
             // from the `- fit` on the outer diatemeter.
             hinge_wall_t - tight_fit - fit / 2,
             lid_hinge_angle
