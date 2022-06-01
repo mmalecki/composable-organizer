@@ -15,7 +15,7 @@ FILES=( compartment lid )
 mkdir -p $OUTPUT_DIR
 
 for size in "$@"; do
-  for file in "$FILES"; do
+  for file in "${FILES[@]}"; do
     echo "building $file with $size..." >&2
     cmd="openscad -D '\$fn=100' -D "size=[$size]" $file.scad -o \"$OUTPUT_DIR/$file-$size.$OUTPUT_EXT\"" 
     echo "$cmd" >&2
