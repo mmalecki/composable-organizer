@@ -54,7 +54,9 @@ module compartment (size, lid_hinge = false) {
 
   i_x = o_x - 2 * wall_t;
   i_y = o_y - 2 * wall_t;
-  i_z = o_z - (lid_hinge ? 2 : 1) * wall_t; // The "second" `wall_t` is for any lids, etc. we might want to attach.
+  // If the compartment has a lid hinge, add in a clearanace for that lid in
+  // order to stay under `u * z` outer size.
+  i_z = o_z - (lid_hinge ? 2 : 1) * wall_t;
 
   insert_bridge_h = o_z - hinge_i_d - hinge_wall_t - 2 * wall_t;
 
