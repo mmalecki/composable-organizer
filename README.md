@@ -34,6 +34,8 @@ cd composable-organizer
 # `output` directory will contain the built files.
 ```
 
+(Note: the build script requires GNU Parallel.)
+
 ### Customizing even further
 The `parameters.scad` file contains several knobs you can tweak to get a more
 custom system (e.g. with thicker walls).
