@@ -3,6 +3,7 @@ use <sizing.scad>;
 include <parameters.scad>;
 
 module receptacle (o_y, h) {
+  receptacle_d = 3 * wall_t;
   square_sleeve([receptacle_d, o_y, h], wall_t);
 }
 
@@ -53,9 +54,9 @@ module compartment (size, lid_hinge = false) {
 
   i_x = o_x - 2 * wall_t;
   i_y = o_y - 2 * wall_t;
-  i_z = o_z - 2 * wall_t; // The "second" `wall_t` is for any lids, etc. we might want to attach.
+  i_z = o_z - (lid_hinge ? 2 : 1) * wall_t; // The "second" `wall_t` is for any lids, etc. we might want to attach.
 
-  insert_bridge_h = lid_hinge ? o_z - hinge_i_d - hinge_wall_t - 2 * wall_t : 0.7 * o_z;
+  insert_bridge_h = o_z - hinge_i_d - hinge_wall_t - 2 * wall_t;
 
   // Bottom:
   cube([o_x, o_y, wall_t]);
