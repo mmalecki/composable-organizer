@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+const MIN_SIZE = 1;
+const MAX_SIZE = 12;
+const xy = new Array(MAX_SIZE - MIN_SIZE + 1).fill(0).map((_, i) => i + MIN_SIZE);
+
+let sizes = [];
+
+for (x of xy) {
+  for (y of xy) {
+    sizes.push(`${x},${y},1`)
+  }
+}
+
+console.log(sizes.join(' '))
