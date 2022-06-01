@@ -64,12 +64,15 @@ module compartment (size, lid_hinge = false) {
   cube([o_x, o_y, wall_t]);
 
   // Walls:
+  echo(lid_hinge);
   translate([0, 0, wall_t]) {
     difference () {
       square_sleeve([o_x, o_y, i_z], wall_t);
-      // Clear out space for the lid's hinge to rotate around in.
-      translate([o_x - hinge_i_d, wall_t, i_z - hinge_i_d - hinge_wall_t])
-        cube([hinge_i_d, o_y - 2 * wall_t, hinge_i_d + hinge_wall_t]);
+      if (lid_hinge) {
+        // Clear out space for the lid's hinge to rotate around in.
+        translate([o_x - hinge_i_d, wall_t, i_z - hinge_i_d - hinge_wall_t])
+          cube([hinge_i_d, o_y - 2 * wall_t, hinge_i_d + hinge_wall_t]);
+      }
     }
   }
 
