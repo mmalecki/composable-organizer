@@ -5,6 +5,8 @@ that can be joined together, lids and trays.
 The unit of sizing is one `u`, `1 u == 20 mm`. The size of a container is
 specified as an array of 3 integers: `[1, 1, 1]`.
 
+![OpenSCAD render of some compartments](docs/img/mockup.png)
+
 ## Build manual
 
 ### Quick build
