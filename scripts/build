@@ -11,9 +11,14 @@ fi
 
 OUTPUT_DIR="output"
 OUTPUT_EXT="stl"
+FILES=( compartment lid )
 mkdir -p $OUTPUT_DIR
 
 for size in "$@"; do
-  openscad -D '$fn=50' -D "size=[$size]" compartment.scad -o "$OUTPUT_DIR/compartment-$size.$OUTPUT_EXT"
-  openscad -D '$fn=50' -D "size=[$size]" lid.scad -o "$OUTPUT_DIR/lid-$size.$OUTPUT_EXT"
-done
+  for file in "$FILES"; do
+    echo "building $file with $size..." >&2
+    cmd="openscad -D '\$fn=100' -D "size=[$size]" $file.scad -o \"$OUTPUT_DIR/$file-$size.$OUTPUT_EXT\"" 
+    echo "$cmd" >&2
+    echo "$cmd"
+  done
+done | parallel
