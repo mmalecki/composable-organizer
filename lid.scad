@@ -14,17 +14,9 @@ module lid (size) {
   w_fit = w - 2 * receptacle_fit;
   body_l = o_x - hinge_o_d;
 
-  translate([0, 0, hinge_u - wall_t]) {
-    hull () {
-      cube([body_l, outer_y(size[1]), wall_t]);
-      translate([body_l, wall_t + (w - w_fit) / 2])
-        cube([hinge_o_d / 2, w_fit, wall_t]);
-    }
-  }
-
   receptacles = floor(o_y / hinge_support_step);
   receptacle_w = hinge_support_step - 2 * receptacle_fit - 2 * wall_t;
-  translate([body_l + hinge_o_d / 2, wall_t, -hinge_o_d / 4 + fit / 2]) {
+  translate([0, wall_t, -hinge_o_d / 4 + fit / 2]) {
     for (i = [1 : 1 : receptacles]) {
       translate([
         0,
@@ -45,6 +37,15 @@ module lid (size) {
     }
   }
 
+  translate([0, 0, hinge_u - wall_t]) {
+    hull () {
+      translate([0, wall_t + (w - w_fit) / 2])
+        cube([hinge_o_d / 2, w_fit, wall_t]);
+
+      translate([hinge_o_d / 2, 0, 0])
+        cube([body_l, outer_y(size[1]), wall_t]);
+    }
+  }
 }
 
 if (!is_undef(size)) {

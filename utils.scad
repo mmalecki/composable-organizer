@@ -1,3 +1,5 @@
+include <parameters.scad>;
+
 module square_sleeve (size, t) {
   linear_extrude(size[2]) {
     difference () {
@@ -10,4 +12,8 @@ module circle_sleeve (o_d, h, t, angle) {
   rotate_extrude (angle = angle) {
     translate([o_d / 2 - t, 0]) square([t, h]);
   }
+}
+
+module to_hinge_x(o_x) {
+  translate([o_x - hinge_o_d / 2, 0]) children();
 }

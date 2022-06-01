@@ -85,7 +85,7 @@ module compartment (size, lid_hinge = false) {
     translate([o_x, wall_t + total_u * (i - 1)]) insert(o_z, insert_bridge_h, lid_guard = lid_hinge);
 
   if (lid_hinge) {
-    translate([o_x - hinge_o_d / 2, 0]) hinge(i_y, o_z);
+    to_hinge_x(o_x) hinge(i_y, o_z);
   }
 }
 
