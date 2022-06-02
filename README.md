@@ -2,8 +2,9 @@
 Composable Organizer is a organizer system made up of compartments of various sizes
 that can be joined together, lids and trays.
 
-The unit of sizing is one `u`, `1 u == 20 mm`. The size of a container is
-specified as an array of 3 integers: `[1, 1, 1]`.
+The unit of sizing is one `u`, `1 u == 20 mm`.
+The size of a container is described by 3 numbers, each describing an axis.
+For example `2, 3, 1` specifies a compartment of 40 mm x 60 mm x 20 mm outer size.
 
 ![OpenSCAD render of some compartments](docs/img/mockup.png)
 ![Compartments in use](docs/img/in-use.jpg)
