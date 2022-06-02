@@ -3,11 +3,14 @@ Composable Organizer is a organizer system made up of compartments of various si
 that can be joined together, lids and trays.
 
 The unit of sizing is one `u`, `1 u == 20 mm`.
-The size of a container is described by 3 numbers, each describing an axis.
-For example `2, 3, 1` specifies a compartment of 40 mm x 60 mm x 20 mm outer size.
+The size of a container is identified by 3 numbers, each describing an axis.
+For example `2 x 3 x 1` specifies a compartment of 40 mm x 60 mm x 20 mm outer size.
 
 ![OpenSCAD render of some compartments](docs/img/mockup.png)
 ![Compartments in use](docs/img/in-use.jpg)
+
+Wall thickness is 1.2 mm by default. It's adjustable, but containers of varying
+wall thickness can't interface with each other.
 
 ## Build manual
 
@@ -34,7 +37,7 @@ you can use OpenSCAD to render it yourself:
 ```
 git clone https://github.com/mmalecki/composable-organizer
 cd composable-organizer
-./scripts/build <size> # size in the format of `x,y,z`, e.g. `2,3,1`
+./scripts/build <size> # size in the format of `<x>x<y>x<z>`, e.g. `2x3x1`
 # `output` directory will contain the built files.
 ```
 

@@ -4,7 +4,7 @@ if [[ -z "$1" ]]; then
   echo "./scripts/build <size> [<size> [...]]  - build composable organizer for given sizes"
   echo
   echo "Example:"
-  echo "  ./build 2,1,1 3,2,1 3,3,1"
+  echo "  ./build 2x1x1 3x2x1 3x3x1"
   echo
   exit 1
 fi
@@ -15,9 +15,10 @@ FILES=( compartment lid )
 mkdir -p $OUTPUT_DIR
 
 for size in "$@"; do
+  openscad_size="${size//x/,}"
   for file in "${FILES[@]}"; do
     echo "building $file with $size..." >&2
-    cmd="openscad -D '\$fn=100' -D "size=[$size]" $file.scad -o \"$OUTPUT_DIR/$file-$size.$OUTPUT_EXT\"" 
+    cmd="openscad -D '\$fn=100' -D "size=[$openscad_size]" $file.scad -o \"$OUTPUT_DIR/$file-$size.$OUTPUT_EXT\"" 
     echo "$cmd" >&2
     echo "$cmd"
   done

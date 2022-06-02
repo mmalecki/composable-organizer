@@ -7,7 +7,7 @@ let sizes = [];
 
 for (x of xy) {
   for (y of xy) {
-    sizes.push(`${x},${y},1`)
+    sizes.push(`${x}x${y}x1`)
   }
 }
 
