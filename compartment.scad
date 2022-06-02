@@ -1,11 +1,7 @@
 use <utils.scad>;
 use <sizing.scad>;
+use <common.scad>;
 include <parameters.scad>;
-
-module receptacle (o_y, h) {
-  receptacle_d = 3 * wall_t;
-  square_sleeve([receptacle_d, o_y, h], wall_t);
-}
 
 module hinge_supports (i_y) {
   supports = floor(i_y / (hinge_support_step + hinge_support_w));
@@ -33,14 +29,12 @@ module hinge (i_y, o_z) {
 }
 
 module insert (o_z, bridge_h, lid_guard = false) {
-  x_fit = loose_fit;
-  y_fit = loose_fit;
-  insert_w = u - 2 * wall_t - y_fit;
+  insert_w = u - 2 * wall_t - insert_y_fit;
 
-  translate([0, y_fit / 2]) {
-    translate([0, 0, bridge_h]) cube([wall_t + x_fit, insert_w, wall_t]);
-    translate([wall_t + x_fit, 0])
-      cube([wall_t - x_fit, insert_w, bridge_h + wall_t + (lid_guard ? hinge_i_d : 0)]);
+  translate([0, insert_y_fit / 2]) {
+    translate([0, 0, bridge_h]) cube([wall_t + insert_x_fit, insert_w, wall_t]);
+    translate([wall_t + insert_x_fit, 0])
+      cube([wall_t - insert_x_fit, insert_w, bridge_h + wall_t + (lid_guard ? hinge_i_d : 0)]);
   }
 }
 
@@ -58,7 +52,7 @@ module compartment (size, lid_hinge = false) {
   // order to stay under `u * z` outer size.
   i_z = o_z - (lid_hinge ? 2 : 1) * wall_t;
 
-  insert_bridge_h = o_z - hinge_i_d - hinge_wall_t - 2 * wall_t;
+  bridge_h = insert_bridge_h(o_z);
 
   // Bottom:
   difference () {
@@ -81,16 +75,16 @@ module compartment (size, lid_hinge = false) {
     }
   }
 
-  translate([o_x, -2 * wall_t]) rotate([0, 0, 90]) receptacle(o_x, insert_bridge_h - fit);
-  translate([wall_t, o_y]) rotate([0, 0, 180]) receptacle(o_y, insert_bridge_h - fit);
+  translate([o_x, -2 * wall_t]) rotate([0, 0, 90]) receptacle(o_x, bridge_h - fit);
+  translate([wall_t, o_y]) rotate([0, 0, 180]) receptacle(o_y, bridge_h - fit);
 
   for (j = [1 : floor(size[0])])
     translate([wall_t + total_u * (j - 1), o_y])
       rotate([0, 0, 270]) mirror([1, 0, 0])
-        insert(o_z, insert_bridge_h);
+        insert(o_z, bridge_h);
 
   for (i = [1 : floor(size[1])])
-    translate([o_x, wall_t + total_u * (i - 1)]) insert(o_z, insert_bridge_h, lid_guard = lid_hinge);
+    translate([o_x, wall_t + total_u * (i - 1)]) insert(o_z, bridge_h, lid_guard = lid_hinge);
 
   if (lid_hinge) {
     to_hinge_x(o_x) hinge(i_y, o_z);
