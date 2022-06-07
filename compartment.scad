@@ -64,7 +64,6 @@ module compartment (size, lid_hinge = false) {
   cube([o_x, o_y, wall_t]);
 
   // Walls:
-  echo(lid_hinge);
   translate([0, 0, wall_t]) {
     difference () {
       square_sleeve([o_x, o_y, i_z], wall_t);
