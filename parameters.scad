@@ -21,6 +21,11 @@ hinge_wall_t = (hinge_o_d - hinge_i_d) / 2;
 hinge_support_step = 20; // How often to place a support for the hinge. 
 hinge_support_w = 3.2;
 hinge_support_t = hinge_u;
-hinge_rib_t = fit;
+hinge_rib_t = loose_fit;
 
 lid_hinge_angle = 260;
+
+emboss_versions = true;
+version_emboss_depth = wall_t / 3;
+version_emboss_font_size = 2;
+version_emboss_offset = 3 * wall_t;

@@ -61,7 +61,23 @@ module compartment (size, lid_hinge = false) {
   insert_bridge_h = o_z - hinge_i_d - hinge_wall_t - 2 * wall_t;
 
   // Bottom:
-  cube([o_x, o_y, wall_t]);
+  difference () {
+    cube([o_x, o_y, wall_t]);
+
+    if (emboss_versions) {
+      translate([version_emboss_offset, version_emboss_offset, 0]) {
+        rotate([0, 0, 270]) linear_extrude (version_emboss_depth) {
+          mirror([1, 0, 0]) text(
+            str(
+              is_undef(git_tag) ? "" : str(git_tag, "-"),
+              is_undef(git_sha) ? "(unknown)" : git_sha
+            ),
+            size = version_emboss_font_size
+          );
+        }
+      }
+    }
+  }
 
   // Walls:
   translate([0, 0, wall_t]) {
