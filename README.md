@@ -1,6 +1,6 @@
 # Composable Organizer
 Composable Organizer is a organizer system made up of compartments of various sizes
-that can be joined together, lids and trays.
+that can be joined together, as well as lids and trays.
 
 The unit of sizing is one `u`, `1 u == 20 mm`.
 The size of a container is identified by 3 numbers, each describing an axis.
