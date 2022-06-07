@@ -49,9 +49,9 @@ module lid (size) {
       }
 
       if (emboss_versions) {
-        translate([version_emboss_offset, version_emboss_offset, 0]) {
-          linear_extrude (version_emboss_depth) {
-            text(
+        translate([hinge_o_d / 2 + version_emboss_offset, version_emboss_offset, 0]) {
+          rotate([0, 0, 270]) linear_extrude (version_emboss_depth) {
+            mirror([1, 0, 0]) text(
               str(
                 is_undef(git_tag) ? "" : str(git_tag, "-"),
                 is_undef(git_sha) ? "(unknown)" : git_sha
