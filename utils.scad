@@ -17,3 +17,19 @@ module circle_sleeve (o_d, h, t, angle) {
 module to_hinge_x(o_x) {
   translate([o_x - hinge_o_d / 2, 0]) children();
 }
+
+function version_str () = str(
+  is_undef(git_tag) ? "" : str(git_tag, "-"),
+  is_undef(git_sha) ? "(unknown)" : git_sha
+);
+
+module version_text () {
+  translate([hinge_o_d / 2 + version_emboss_offset, version_emboss_offset, 0]) {
+    rotate([0, 0, 270]) linear_extrude (version_emboss_depth) {
+      mirror([1, 0, 0]) text(
+        version_str(),
+        size = version_emboss_font_size
+      );
+    }
+  }
+}
