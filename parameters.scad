@@ -19,7 +19,7 @@ hinge_wall_t = (hinge_o_d - hinge_i_d) / 2;
 
 // Hinge supports:
 hinge_support_step = 20; // How often to place a support for the hinge. 
-hinge_support_w = 2;
+hinge_support_w = 3.2;
 hinge_support_t = hinge_u;
 hinge_rib_t = fit;
 
