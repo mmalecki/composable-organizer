@@ -21,7 +21,7 @@ for size in "$@"; do
   openscad_size="${size//x/,}"
   for file in "${FILES[@]}"; do
     echo "building $file with $size..." >&2
-    cmd="openscad -D '\$fn=100' -D 'git_sha=\"$git_sha\"' -D 'emboss_versions=true' -D 'size=[$openscad_size]' $file.scad -o \"$OUTPUT_DIR/$file-$size.$OUTPUT_EXT\"" 
+    cmd="openscad -D '\$fn=100' -D 'version_string=\"$git_sha\"' -D 'emboss_versions=true' -D 'size=[$openscad_size]' $file.scad -o \"$OUTPUT_DIR/$file-$size.$OUTPUT_EXT\"" 
     echo "$cmd" >&2
     echo "$cmd"
   done

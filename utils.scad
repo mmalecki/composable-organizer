@@ -18,10 +18,7 @@ module to_hinge_x(o_x) {
   translate([o_x - hinge_o_d / 2, 0]) children();
 }
 
-function version_str () = str(
-  is_undef(git_tag) ? "" : str(git_tag, "-"),
-  is_undef(git_sha) ? "(unknown)" : git_sha
-);
+function version_str () = is_undef(version_string) ? "(none)" : version_string;
 
 module version_text () {
   translate([hinge_o_d / 2 + version_emboss_offset, version_emboss_offset, 0]) {
