@@ -49,7 +49,7 @@ module lid (size) {
       }
 
       if (emboss_versions) {
-        version_text();
+        translate([hinge_o_d / 2, 0]) version_text();
       }
     }
   }

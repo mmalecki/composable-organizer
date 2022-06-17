@@ -15,7 +15,13 @@ module tray (size, walls = false) {
   o_z = outer_z(size[2]);
 
   bridge_h = insert_bridge_h(outer_z(size[2]));
-  cube([o_x, o_y, tray_wall_t]);
+  difference () {
+    cube([o_x, o_y, tray_wall_t]);
+
+    if (emboss_versions) {
+      version_text();
+    }
+  }
 
   if (walls) {
     translate([-wall_t, -wall_t]) {

@@ -21,7 +21,7 @@ module to_hinge_x(o_x) {
 function version_str () = is_undef(version_string) ? "(none)" : version_string;
 
 module version_text () {
-  translate([hinge_o_d / 2 + version_emboss_offset, version_emboss_offset, 0]) {
+  translate([version_emboss_offset, version_emboss_offset, 0]) {
     rotate([0, 0, 270]) linear_extrude (version_emboss_depth) {
       mirror([1, 0, 0]) text(
         version_str(),

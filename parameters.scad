@@ -30,7 +30,7 @@ lid_hinge_angle = 260;
 
 emboss_versions = false;
 version_emboss_depth = wall_t / 3;
-version_emboss_font_size = 2.5;
+version_emboss_font_size = 3;
 version_emboss_offset = wall_t;
 
 // Tray:
