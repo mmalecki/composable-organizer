@@ -11,7 +11,7 @@ fi
 
 OUTPUT_DIR="output"
 OUTPUT_EXT="stl"
-FILES=( compartment lid )
+FILES=( compartment lid tray tray-lid )
 
 git_sha=$((git rev-parse HEAD || echo "(none)") | cut -c 1-8)
 
