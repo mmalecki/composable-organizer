@@ -13,8 +13,8 @@ module tray_lid (size, notch = true) {
       cube([o_x, o_y, tray_wall_t]);
       translate([tray_wall_t + half_fit, tray_wall_t + half_fit, tray_wall_t]) {
         square_sleeve([
-          o_x - half_fit - 2 * tray_wall_t,
-          o_y - half_fit - 2 * tray_wall_t,
+          o_x - tray_lid_fit - 2 * tray_wall_t,
+          o_y - tray_lid_fit - 2 * tray_wall_t,
           tray_lid_catch
         ], wall_t);
       }
