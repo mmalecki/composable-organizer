@@ -20,8 +20,10 @@ module tray_lid (size, notch = true) {
       }
     }
 
-    translate([0, (o_y - notch_w) / 2, tray_wall_t - notch_h]) {
-      cube([notch_d, notch_w, notch_h]);
+    if (notch) {
+      translate([0, (o_y - notch_w) / 2, tray_wall_t - notch_h]) {
+        cube([notch_d, notch_w, notch_h]);
+      }
     }
   }
 }
