@@ -47,5 +47,12 @@ tray_insert_x_fit = loose_fit;
 tray_insert_y_fit = 3;
 // The fit between outside of the tray and compartments.
 tray_fit = loose_fit;
+tray_top_fit = tray_wall_t;
 // The fit between compartments inside the tray.
 tray_containers_fit = fit;
+
+// Tray lid:
+notch_h = tray_wall_t / 2;
+notch_d = tray_wall_t;
+notch_w = u / 2;
+tray_lid_catch = 2.5 * tray_wall_t;

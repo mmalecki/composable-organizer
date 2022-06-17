@@ -22,7 +22,7 @@ module tray (size, walls = false) {
       square_sleeve([
         o_x + 2 * wall_t,
         o_y + 2 * wall_t,
-        o_z + tray_wall_t + fit
+        o_z + tray_wall_t + tray_top_fit
       ], tray_wall_t);
     }
   }
