@@ -2,11 +2,6 @@ use <sizing.scad>;
 use <utils.scad>;
 include <parameters.scad>;
 
-module receptacle (o_y, fit, h) {
-  receptacle_d = 3 * wall_t + fit;
-  square_sleeve([receptacle_d, o_y, h], wall_t);
-}
-
 module insert (o_z, bridge_h) {
   insert_w = u - 2 * wall_t - tray_insert_y_fit;
 
