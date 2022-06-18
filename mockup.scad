@@ -11,7 +11,7 @@ $fn = 50;
 compartment_color = "yellowgreen";
 tray_color = "LemonChiffon";
 
-lids = false;
+lids = true;
 compartments = true;
 tray = true;
 tray_lid = true;
