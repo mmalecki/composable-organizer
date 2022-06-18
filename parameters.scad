@@ -27,6 +27,7 @@ hinge_support_t = hinge_u;
 hinge_rib_t = loose_fit;
 
 lid_hinge_angle = 260;
+lid_top_fit = tight_fit;
 
 emboss_versions = false;
 version_emboss_depth = wall_t / 3;

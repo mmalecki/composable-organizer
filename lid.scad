@@ -40,11 +40,11 @@ module lid (size) {
   translate([0, 0, hinge_u - wall_t]) {
     difference () {
       hull () {
-        translate([0, wall_t + (w - w_fit) / 2])
-          cube([hinge_o_d / 2, w_fit, wall_t]);
+        translate([0, wall_t + (w - w_fit) / 2, lid_top_fit])
+          cube([hinge_o_d / 2, w_fit, wall_t - lid_top_fit]);
 
-        translate([hinge_o_d / 2, 0, 0]) {
-          cube([body_l, outer_y(size[1]), wall_t]);
+        translate([hinge_o_d / 2, 0, lid_top_fit]) {
+          cube([body_l, outer_y(size[1]), wall_t - lid_top_fit]);
         }
       }
 
