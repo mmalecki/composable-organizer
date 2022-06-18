@@ -38,7 +38,7 @@ version_emboss_offset = wall_t;
 // You may want more solid walls on your trays. The tray will still interface
 // with `wall_t` compartments.
 tray_wall_t = wall_t;
-tray_lid_fit = fit;
+tray_lid_fit = press_fit;
 
 // The fit here is larger because the tray is not the primary thing holding
 // the containers together. Additionally, there's less clearance to take these
