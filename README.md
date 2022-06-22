@@ -30,9 +30,10 @@ from 1u - 12u.
   located inside the bottom wall).
 * **Perimeters**: 3
 
-## Customizing
+### Building from source
 If there's a particular size you need that isn't covered by the available STLs,
-you can use OpenSCAD to render it yourself:
+or you'd simply prefer to build the STLs from source, you can use OpenSCAD
+and scripting inside this repository to do so:
 
 ```
 git clone https://github.com/mmalecki/composable-organizer
@@ -43,6 +44,6 @@ cd composable-organizer
 
 (Note: the build script requires GNU Parallel.)
 
-### Customizing even further
+#### Customizing
 The `parameters.scad` file contains several knobs you can tweak to get a more
 custom system (e.g. with thicker walls).
