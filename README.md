@@ -15,9 +15,9 @@ wall thickness can't interface with each other.
 ## Build manual
 
 ### Quick build
-To quickly print these out, head on over to [TBD printables.com link] (). The 
-model contains compartment and lid STLs rendered for all variations of sizes
-from 1u - 12u.
+To quickly print these out, head on over to [printables.com](https://www.printables.com/model/231583-composable-organizer). The 
+model contains compartments, trays and lids STLs rendered for all variations of
+sizes from 1u - 12u.
 
 ### Print settings
 * **Material**: Any material. I used Prusament PLA.
