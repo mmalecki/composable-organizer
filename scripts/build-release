@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+./scripts/build $(./scripts/generate-release-sizes)
+rm -f output/release.zip
+zip output/release.zip -x '.git/*' -x '.github/*' -x 'output/sliced/*' -r .
