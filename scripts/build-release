@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
-./scripts/build $(./scripts/generate-release-sizes)
+if [ -z "$NO_BUILD" ]; then
+  ./scripts/build $(./scripts/generate-release-sizes)
+fi
+
 rm -f output/release.zip
-zip output/release.zip -x '.git/*' -x '.github/*' -x 'output/sliced/*' -r .
+
+# Ignore everything Printables.com doesn't accept:
+zip output/release.zip \
+  -x '.git/*' \
+  -x '.github/*' \
+  -x 'output/sliced/*' \
+  -x 'scripts/*' \
+  -x '.gitignore' \
+  -x 'LICENSE' \
+  -x 'README.md' \
+  -r .
