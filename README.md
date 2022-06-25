@@ -6,8 +6,8 @@ The unit of sizing is one `u`, `1 u == 20 mm`.
 The size of a container is identified by 3 numbers, each describing an axis.
 For example `2 x 3 x 1` specifies a compartment of 40 mm x 60 mm x 20 mm outer size.
 
-![OpenSCAD render of some compartments](docs/img/mockup.png)
 ![Compartments in use](docs/img/in-use.jpg)
+![OpenSCAD render of some compartments](docs/img/mockup.png)
 
 Wall thickness is 1.2 mm by default. It's adjustable, but containers of varying
 wall thickness can't interface with each other.
