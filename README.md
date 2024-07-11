@@ -1,4 +1,7 @@
 # Composable Organizer
+
+**Archived:** The latching mechanism is not the best idea. I don't recommend anyone print this - just use Gridfinity.
+
 Composable Organizer is a organizer system made up of compartments of various sizes
 that can be joined together, as well as lids and trays.
 
